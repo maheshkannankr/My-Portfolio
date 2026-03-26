@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@config "../../tailwind.config.ts";
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Hide scrollbar (Firefox) */
+}
+/* Hide scrollbar (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+.clip-left-triangle {
+  clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+}
+
+.clip-right-triangle {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 15% 100%, 0 50%);
+}
