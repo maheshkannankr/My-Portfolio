@@ -49,20 +49,21 @@ export default function AboutSection() {
 
           {/* 🔥 CTA */}
           <div className='mt-8'>
-            <button
+            <a
+              href='/MaheshKannan_Resume.pdf'
+              download='MaheshKannan_Resume.pdf'
               className='
-              flex items-center gap-2 
-              px-5 py-3 rounded-xl 
-              text-black/70 border border-black/10
-              hover:bg-black/5 transition
-            '
+                  flex items-center gap-2 
+                  px-5 py-3 rounded-xl 
+                  text-black/70 border border-black/10
+                  hover:bg-black/5 transition
+                  w-fit
+                '
             >
               <Download size={18} />
               <span className='hidden sm:inline'>Download</span>
-
-              {/* Mobile: icon only */}
               <span>Resume</span>
-            </button>
+            </a>
           </div>
         </motion.div>
 

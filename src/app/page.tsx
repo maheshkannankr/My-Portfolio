@@ -1,13 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import {
-  animate,
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import Image from 'next/image';
 
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -19,10 +15,8 @@ import ScrollArrow from '@/components/ScrollArrow';
 import { CursorAura } from '@/components/CursorAura';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
-
-/* =========================
-   SECTION COMPONENT
-========================= */
+import ParallaxBackground from '@/components/ParallaxBackground';
+import ScrollParallaxBg from '@/components/ScrollParallaxBg';
 
 /* =========================
    MAIN PAGE
@@ -99,27 +93,11 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKey);
   }, [activeIndex, goToSmooth]);
 
-  /* =========================
-     TOUCH SWIPE (MOBILE)
-  ========================= */
-  const touchStartY = useRef(0);
-
-  /* =========================
-     BACKGROUND (PREMIUM)
-  ========================= */
-  const backgrounds = [
-    'radial-gradient(circle at 20% 20%, #ffe5e5, #3a1c1c)',
-    'radial-gradient(circle at 80% 30%, #e0f2fe, #dafd87)',
-    'radial-gradient(circle at 30% 80%, #f3e8ff, #5df8c5)',
-    'radial-gradient(circle at 70% 70%, #dcfce7, #82e6ff)',
-    'radial-gradient(circle at 50% 20%, #fef9c3, #859bf8)',
-    'radial-gradient(circle at 20% 80%, #fce7f3, #fc7cebc1)',
-  ];
-
   return (
     <>
       <CursorAura />
 
+      <ScrollParallaxBg activeIndex={activeIndex} />
       {/* 🔥 Progress Bar */}
       <motion.div
         className='fixed top-0 left-0 h-0.75 bg-black z-50'
