@@ -14,7 +14,7 @@ const images = [
 
 export default function ScrollParallaxBg({ activeIndex }) {
   return (
-    <div className='fixed inset-0 -z-10 overflow-hidden pointer-events-none'>
+    <div className='fixed inset-0 z-30 overflow-hidden pointer-events-none'>
       {images.map((src, index) => (
         <motion.div
           key={index}
@@ -23,10 +23,7 @@ export default function ScrollParallaxBg({ activeIndex }) {
             opacity: activeIndex === index ? 0.25 : 0,
             scale: activeIndex === index ? 1 : 1.1,
 
-            // 🔥 Rotation effect
-            rotate: activeIndex * 90,
-
-            // 🔥 Parallax shift
+            // 🔥 ONLY parallax movement
             y: (activeIndex - index) * -60,
           }}
           transition={{
@@ -40,7 +37,7 @@ export default function ScrollParallaxBg({ activeIndex }) {
             alt='bg'
             width={800}
             height={800}
-            className='blur-sm mix-blend-lighten'
+            className='rotate-90 object-cover  blur-sm mix-blend-color'
           />
         </motion.div>
       ))}

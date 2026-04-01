@@ -15,8 +15,6 @@ import ScrollArrow from '@/components/ScrollArrow';
 import { CursorAura } from '@/components/CursorAura';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
-import ParallaxBackground from '@/components/ParallaxBackground';
-import ScrollParallaxBg from '@/components/ScrollParallaxBg';
 
 /* =========================
    MAIN PAGE
@@ -39,6 +37,7 @@ export default function Home() {
   ========================= */
   const goToSmooth = useCallback(
     (index: number) => {
+      if (index < 0 || index >= sections.length) return;
       if (index === activeIndex) return;
 
       isAnimating.current = true;
@@ -48,12 +47,16 @@ export default function Home() {
         isAnimating.current = false;
       }, 650);
     },
-    [activeIndex],
+    [activeIndex, sections.length],
   );
 
-  const goToInstant = useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
+  const goToInstant = (index: number) => {
+    if (index < 0 || index >= sections.length) return;
+
+    goToSmooth(index);
+  };
+  const safeIndex =
+    activeIndex >= 0 && activeIndex < sections.length ? activeIndex : 0;
 
   /* =========================
      WHEEL CONTROL (IMPROVED)
@@ -95,9 +98,9 @@ export default function Home() {
 
   return (
     <>
-      <CursorAura />
+      {/* <CursorAura /> */}
 
-      <ScrollParallaxBg activeIndex={activeIndex} />
+      {/* <ScrollParallaxBg activeIndex={activeIndex} /> */}
       {/* 🔥 Progress Bar */}
       <motion.div
         className='fixed top-0 left-0 h-0.75 bg-black z-50'
@@ -122,8 +125,9 @@ export default function Home() {
       /> */}
 
       {/* 🔥 Navbar */}
+
       <Navbar
-        active={sections[activeIndex].id}
+        active={sections[safeIndex].id}
         onNavigate={(id: string) => {
           const index = sections.findIndex((s) => s.id === id);
           if (index !== -1) goToInstant(index);
@@ -161,20 +165,20 @@ export default function Home() {
       >
         <AnimatePresence mode='wait'>
           <Section
-            key={sections[activeIndex].id}
-            index={activeIndex}
-            activeIndex={activeIndex}
+            key={sections[safeIndex].id}
+            index={safeIndex}
+            activeIndex={safeIndex}
           >
             {(() => {
-              const ActiveComponent = sections[activeIndex].Component;
+              const ActiveComponent = sections[safeIndex].Component;
               return <ActiveComponent />;
             })()}
           </Section>
         </AnimatePresence>
-        {activeIndex === 0 && (
+        {safeIndex === 0 && (
           <ScrollArrow
             direction='down'
-            onClick={() => goToSmooth(activeIndex + 1)}
+            onClick={() => goToSmooth(safeIndex + 1)}
           />
         )}
 

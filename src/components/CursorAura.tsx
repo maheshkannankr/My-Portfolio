@@ -41,11 +41,11 @@ export function CursorAura() {
           background: `
             conic-gradient(
               at 50% 50%,
-              #ff00cc,
-              #3333ff,
-              #00ffcc,
-              #ffcc00,
-              #ff00cc
+              #ff5edf,
+              #5f5ffa,
+              #62ffe0,
+              #ffe064,
+              #ff6ee2
             )
           `,
           filter: 'blur(90px) brightness(1.3)',

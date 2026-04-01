@@ -16,8 +16,8 @@ export default function AboutSection() {
       <div className='max-w-7xl w-full flex flex-col gap-6'>
         {/* 🔥 TITLE */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-black/60'>
@@ -27,8 +27,8 @@ export default function AboutSection() {
 
         {/* 🔥 CONTENT */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className='max-w-3xl'
         >
