@@ -96,7 +96,8 @@ export default function Contact() {
         backdrop-blur-sm
         border border-white/20
         shadow-[0_8px_32px_rgba(0,0,0,0.08)]
-        p-2
+        p-2 grayscale
+        hover:grayscale-0
         flex justify-center items-center
         transition duration-150 ease-out
       '
@@ -107,8 +108,7 @@ export default function Contact() {
                   width={item.size}
                   height={item.size}
                   className='
-          grayscale
-          hover:grayscale-0
+
           transition duration-150 ease-out
         '
                 />

@@ -1,19 +1,18 @@
 'use client';
 
-import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
-import Image from 'next/image';
+import { animate, motion, useMotionValue } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
-import {
-  ExternalLink,
-  GitBranch,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProjectCard } from './ProjectCards';
+import PopupModel from './PopupModel';
+import ProjectOverviewModal from './ProjectOverviewModal';
+import { projects } from '@/data/projects';
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dragWidth, setDragWidth] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const updateWidth = () => {
@@ -29,48 +28,16 @@ export default function Projects() {
 
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
-  const projects = [
-    {
-      title: 'Cronus – Data Extraction Platform',
-      image:
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800',
-      tech: ['Next.js', 'TypeScript', 'REST APIs', 'AI Integration'],
-      live: '#',
-      github: '#',
-      description:
-        'Built dashboards for data-intensive automation workflows with AI-powered parsing and real-time updates.',
-    },
-    {
-      title: 'PMS – Performance Management System',
-      image:
-        'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800',
-      tech: ['Next.js', 'Figma', 'TypeScript', 'HTML', 'CSS'],
-      live: '#',
-      github: '#',
-      description:
-        'Designed role-based workflow interfaces with multi-level approvals and scalable navigation architecture.',
-    },
-    {
-      title: 'TBTA – Mobile App (PlayStore)',
-      image:
-        'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800',
-      tech: ['React Native', 'API Integration'],
-      live: '#',
-      github: '#',
-      description:
-        'Developed and deployed a production mobile app with real-time price tracking and multi-role access control.',
-    },
-    {
-      title: 'Sevanun – Patient Monitoring System',
-      image:
-        'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800',
-      tech: ['React', 'React Native', 'Healthcare UI'],
-      live: '#',
-      github: '#',
-      description:
-        'Built real-time patient monitoring UI with scheduling and structured healthcare workflows.',
-    },
-  ];
+
+  const handleOpen = (project: any) => {
+    setSelectedProject(project);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedProject(null);
+  };
 
   const x = useMotionValue(0);
 
@@ -157,8 +124,15 @@ export default function Projects() {
               index={i}
               x={x}
               cardWidth={CARD_WIDTH}
+              onDetailsClick={() => handleOpen(project)}
             />
           ))}
+
+          <PopupModel isOpen={isOpen} onClose={handleClose}>
+            {selectedProject && (
+              <ProjectOverviewModal project={selectedProject} />
+            )}
+          </PopupModel>
 
           {/* 🔥 Spacer (fix last card clipping) */}
           <div className='w-6 shrink-0' />

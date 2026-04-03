@@ -3,32 +3,17 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import Image from 'next/image';
-
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
 import Navbar from '@/components/Navbar';
 import Section from '@/components/Section';
-import Projects from '@/components/Projects';
+
 import ScrollArrow from '@/components/ScrollArrow';
-import { CursorAura } from '@/components/CursorAura';
-import Experience from '@/components/Experience';
-import Contact from '@/components/Contact';
+
+import { sections } from '@/data/sections';
 
 /* =========================
    MAIN PAGE
 ========================= */
 export default function Home() {
-  const sections = [
-    { id: 'home', Component: Hero },
-    { id: 'about', Component: About },
-    { id: 'skills', Component: Skills },
-    { id: 'projects', Component: Projects },
-    { id: 'experience', Component: Experience },
-    { id: 'contact', Component: Contact },
-  ];
-
   const [activeIndex, setActiveIndex] = useState(0);
   const isAnimating = useRef(false);
 

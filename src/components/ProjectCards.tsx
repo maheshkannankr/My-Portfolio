@@ -6,9 +6,16 @@ type Props = {
   index: number;
   x: any;
   cardWidth: number;
+  onDetailsClick: () => void;
 };
 
-export function ProjectCard({ project, index, x, cardWidth }: Props) {
+export function ProjectCard({
+  project,
+  index,
+  x,
+  cardWidth,
+  onDetailsClick,
+}: Props) {
   const input = [
     -(index + 1) * cardWidth,
     -index * cardWidth,
@@ -75,14 +82,13 @@ export function ProjectCard({ project, index, x, cardWidth }: Props) {
       {/* 🔥 FOOTER (always aligned) */}
       <div className='flex justify-between items-center mt-4'>
         <div className='flex gap-4'>
-          <a
-            href={project.live}
-            target='_blank'
+          <button
+            onClick={onDetailsClick}
             className='flex items-center gap-1 text-xs text-amber-600 hover:text-amber-700'
           >
             <ExternalLink size={14} />
-            Live
-          </a>
+            Details
+          </button>
 
           <a
             href={project.github}
