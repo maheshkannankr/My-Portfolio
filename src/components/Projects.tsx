@@ -31,14 +31,7 @@ export default function Projects() {
       <div className='px-10'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15'>
           {projects.map((project, i) => (
-            <ProjectCard
-              key={i}
-              project={project}
-              index={i}
-              x={0}
-              cardWidth={0}
-              onDetailsClick={() => handleOpen(project)}
-            />
+            <ProjectCard key={i} project={project} />
           ))}
         </div>
       </div>
