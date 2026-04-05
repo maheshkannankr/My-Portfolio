@@ -38,13 +38,7 @@ export default function Projects() {
 
       {/* MODAL */}
       <PopupModel isOpen={isOpen} onClose={handleClose}>
-        {selectedProject && (
-          <ProjectOverviewModal
-            isOpen
-            onClose={handleClose}
-            project={selectedProject}
-          />
-        )}
+        {selectedProject && <ProjectOverviewModal project={selectedProject} />}
       </PopupModel>
     </section>
   );
