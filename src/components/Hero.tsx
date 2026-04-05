@@ -8,7 +8,7 @@ export default function Hero() {
     <motion.div
       initial={{ opacity: 0, y: 80, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1}}
+      transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
       viewport={{ once: false, amount: 0.4 }}
     >
       <section className='relative min-h-screen flex items-center justify-center px-6 overflow-hidden '>
@@ -25,7 +25,8 @@ export default function Hero() {
             </h1>
 
             <p className='mt-6 text-base sm:text-lg md:text-xl text-gray/700'>
-              Frontend Developer • React • API Integration
+              Full Stack Developer specializing in scalable web apps Built
+              API-driven dashboards used for workflow automation
             </p>
           </motion.div>
 

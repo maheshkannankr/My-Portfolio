@@ -1,3 +1,4 @@
+import { PopupModelProvider } from '@/provider/PopupModelProvider';
 import './globals.css';
 import { Nunito, Tangerine } from 'next/font/google';
 
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${nunito.variable} ${tangerine.variable}`}>
       <body className='font-sans bg-background-light text-text-primary dark:bg-background-dark dark:text-text-inverse transition-colors duration-300'>
-        {children}
+        <PopupModelProvider>{children}</PopupModelProvider>
       </body>
     </html>
   );

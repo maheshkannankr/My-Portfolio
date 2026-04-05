@@ -1,109 +1,137 @@
-import { motion, useTransform } from 'framer-motion';
-import { ExternalLink, GitBranch, Folder } from 'lucide-react';
+'use client';
+
+import { motion } from 'framer-motion';
+import { ExternalLink, GitBranch, Folder, Terminal } from 'lucide-react';
+import { usePopupModel } from '@/context/PopupModelContext';
 
 type Props = {
   project: any;
-  index: number;
-  x: any;
-  cardWidth: number;
-  onDetailsClick: () => void;
 };
 
-export function ProjectCard({
-  project,
-  index,
-  x,
-  cardWidth,
-  onDetailsClick,
-}: Props) {
-  const input = [
-    -(index + 1) * cardWidth,
-    -index * cardWidth,
-    -(index - 1) * cardWidth,
-  ];
-
-  const scale = useTransform(x, input, [0.95, 1, 0.95]);
-  const opacity = useTransform(x, input, [0.7, 1, 0.7]);
+export function ProjectCard({ project }: Props) {
+  const { openModel } = usePopupModel();
 
   return (
     <motion.div
-      style={{ scale, opacity }}
-      className='
-        group
-        min-w-[280px] sm:min-w-[320px]
-        h-[300px]   /* 🔥 FIXED HEIGHT */
-        rounded-2xl
-        bg-white/5
-        backdrop-blur-sm
-        shadow-[0_8px_32px_rgba(0,0,0,0.08)]
-        border border-white/10
-        p-5
-        flex flex-col justify-between   /* 🔥 IMPORTANT */
-        transition duration-300
-        hover:bg-white/10
-      '
+      initial='rest'
+      whileHover='hover'
+      animate='rest'
+      className='relative w-full pb-0'
     >
-      {/* 🔥 TOP CONTENT */}
-      <div>
-        {/* Icon */}
-        <div className='w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/10 mb-4'>
-          <Folder className='text-amber-500' size={20} />
+      {/* CARD */}
+      <motion.div
+        variants={{
+          rest: {
+            boxShadow: '0 6px 12px rgba(0,0,0,0.08)',
+            backgroundColor: 'rgba(255,255,255,0.05)',
+            borderColor: 'rgba(255,255,255,0.2)',
+            y: 0,
+          },
+          hover: {
+            boxShadow: '0 12px 24px rgba(0,0,0,0.24)',
+            backgroundColor: 'rgb(236, 236, 236)',
+            borderColor: 'rgba(255,255,255,0.3)',
+            y: -2,
+          },
+        }}
+        transition={{ duration: 0.25 }}
+        className='
+            relative z-10
+            rounded-2xl
+            h-[200px]
+            border
+            p-6
+          '
+      >
+        <div className='flex items-center gap-3 mb-4'>
+          <div className='w-10 h-10 flex items-center justify-center rounded-lg '>
+            <Folder className='text-primary' size={18} />
+          </div>
+
+          <div>
+            <h3 className='text-sm font-semibold text-black/80'>
+              {project.title}
+            </h3>
+            <p className='text-xs text-black/50 line-clamp-2'>
+              {project.description}
+            </p>
+          </div>
         </div>
 
-        {/* Title */}
-        <h3 className='text-base font-semibold text-black/80'>
-          {project.title}
-        </h3>
-
-        {/* Description (fixed height) */}
-        <p className='text-sm text-black/60 mt-1 h-[40px] line-clamp-2'>
-          {project.description}
-        </p>
-
-        {/* Tech (fixed space) */}
-        <div className='flex flex-wrap gap-2 mt-3 min-h-[40px]'>
-          {project.tech.slice(0, 3).map((tech: string, i: number) => (
-            <span
+        {/* TOOLS */}
+        <div className='space-y-2 mt-4'>
+          {project.tools?.slice(0, 4).map((tool: string, i: number) => (
+            <div
               key={i}
-              className='
-                text-xs px-2 py-1
-                rounded-md
-                bg-white/10
-                border border-white/10
-                text-black/70
-              '
+              className='flex items-center gap-2 text-sm text-black/70'
             >
-              {tech}
-            </span>
+              <Terminal size={14} className='text-primary' />
+              <span>{tool}</span>
+            </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* 🔥 FOOTER (always aligned) */}
-      <div className='flex justify-between items-center mt-4'>
-        <div className='flex gap-4'>
-          <button
-            onClick={onDetailsClick}
-            className='flex items-center gap-1 text-xs text-amber-600 hover:text-amber-700'
-          >
-            <ExternalLink size={14} />
-            Details
-          </button>
+      {/* DRAWER */}
+      <motion.div
+        variants={{
+          rest: { scaleY: 0, opacity: 0 },
+          hover: { scaleY: 1, opacity: 1 },
+        }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        style={{ transformOrigin: 'top' }}
+        className='
+          absolute top-full left-0 w-full
+          pt-6
+          -mt-4
+          bg-primary/50 backdrop-blur-md
+          border border-white/20
+          rounded-b-2xl
+          shadow-[0_12px_24px_rgba(0,0,0,0.12)]
+          overflow-hidden
+          z-0
+        '
+      >
+        <div className='flex items-center justify-between px-6 py-2'>
+          {/* LEFT */}
+          <div>
+            <p className='text-xs text-black/50'>More Information</p>
+          </div>
 
-          <a
-            href={project.github}
-            target='_blank'
-            className='flex items-center gap-1 text-xs text-black/60 hover:text-black'
-          >
-            <GitBranch size={14} />
-            Code
-          </a>
+          {/* CTA */}
+          <div className='flex gap-2'>
+            <button
+              onClick={() => openModel('PROJECT', project)}
+              className='
+                flex items-center gap-1
+                text-xs px-3 py-1.5 rounded-md
+                bg-black text-white
+                hover:bg-black/80 transition
+              '
+            >
+              <ExternalLink size={12} />
+              Details
+            </button>
+
+            {project.github && (
+              <a
+                href={project.github}
+                target='_blank'
+                className='
+                  flex items-center gap-1
+                  text-xs px-3 py-1.5 rounded-md
+                  border border-white/20
+                  text-black/70
+                  hover:bg-white/10 transition
+                '
+              >
+                <GitBranch size={12} />
+                Code
+              </a>
+            )}
+          </div>
         </div>
-
-        <span className='text-black/40 group-hover:translate-x-1 transition'>
-          →
-        </span>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

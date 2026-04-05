@@ -1,50 +1,85 @@
 'use client';
 
-import Image from 'next/image';
+import { Briefcase, Wrench, Trophy } from 'lucide-react';
 
-type ProjectOverviewModalProps = {
-  project: any;
-};
+interface ProjectOverviewModalProps {
+  project: {
+    title: string;
+    role: string;
+    tools: string[];
+    achievements: string[];
+  };
+}
 
 export default function ProjectOverviewModal({
   project,
 }: ProjectOverviewModalProps) {
+  if (!project) return null;
+
   return (
-    <div className='text-white max-w-2xl max-h-[80vh] overflow-y-auto'>
-      {/* Title */}
-      <h2 className='text-2xl font-bold mb-4'>{project.title}</h2>
+    <div className='max-w-5xl mx-auto'>
+      {/* GLASS CONTAINER */}
+      <div className='rounded-2xl bg-white/5 backdrop-blur-sm border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden'>
+        {/* HEADER */}
+        <div className='px-6 py-5 text-xl font-semibold text-black/80 border-b border-white/20'>
+          {project.title}
+        </div>
 
-      {/* Screenshots */}
-      <div className='grid grid-cols-2 gap-4 mb-4'>
-        <Image
-          height={100}
-          width={200}
-          src={project.image}
-          alt='screenshot'
-          className='rounded-lg object-cover'
-        />
-        <Image
-          height={100}
-          width={200}
-          src={project.image}
-          alt='screenshot'
-          className='rounded-lg object-cover'
-        />
-      </div>
+        {/* GRID (KEY PART) */}
+        <div className='grid grid-cols-[1fr_2fr]'>
+          {/* ROW 1 */}
+          <div className='flex items-start gap-3 px-5 py-6 border-b border-white/20'>
+            <Briefcase size={18} className='text-green-500' />
+            <span className='text-sm text-black/60'>What was my role?</span>
+          </div>
 
-      {/* Description */}
-      <p className='text-white/80 mb-4'>{project.description}</p>
+          <div className='px-6 py-6 border-b border-white/20 hover:bg-white/10 transition'>
+            <p className='text-black/80 leading-relaxed'>{project.role}</p>
+          </div>
 
-      {/* Tech Stack */}
-      <div className='flex flex-wrap gap-2'>
-        {project.tech.map((tech: string, i: number) => (
-          <span
-            key={i}
-            className='px-3 py-1 bg-white/10 border border-white/20 rounded-full text-sm'
-          >
-            {tech}
-          </span>
-        ))}
+          {/* ROW 2 */}
+          <div className='flex items-center gap-3 px-5 py-6 border-b border-white/20'>
+            <Wrench size={18} className='text-blue-500' />
+            <span className='text-sm text-black/60'>What I used?</span>
+          </div>
+
+          <div className='px-6 py-6 border-b border-white/20'>
+            <div className='flex flex-wrap gap-3'>
+              {project.tools.map((tool, i) => (
+                <span
+                  key={i}
+                  className='px-3 py-1 text-xs rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-black/70 hover:scale-105 transition'
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* ROW 3 */}
+          <div className='flex items-start gap-3 px-5 py-6'>
+            <Trophy size={18} className='text-yellow-500' />
+            <span className='text-sm text-black/60'>What I achieved?</span>
+          </div>
+          <div className='px-6 py-6'>
+            <div className='relative'>
+              {/* LINE */}
+              <div className='absolute left-1.5 top-0 bottom-0 w-px bg-black/10'></div>
+
+              {project.achievements.map((item, i) => (
+                <div key={i} className='flex items-start gap-4 mb-6 group'>
+                  {/* DOT (aligned with line) */}
+                  <span className='w-3 h-3 bg-green-500 rounded-full mt-[6px] flex-shrink-0 z-10 group-hover:scale-125 transition'></span>
+
+                  {/* TEXT */}
+                  <p className='text-black/70 group-hover:text-black transition leading-relaxed'>
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
   );

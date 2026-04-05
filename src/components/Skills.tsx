@@ -18,6 +18,7 @@ const skillsData = [
       { name: 'React Native', icon: '/assets/skills/reactnative.svg' },
       { name: 'Next.js', icon: '/assets/skills/next.svg' },
       { name: 'Redux', icon: '/assets/skills/redux.svg' },
+      { name: 'Zustand', icon: '/assets/skills/zustand.svg' },
       { name: 'Motion Framer', icon: '/assets/skills/motion.svg' },
     ],
   },
