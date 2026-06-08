@@ -11,7 +11,7 @@ export default function AboutSection() {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
       viewport={{ once: false, amount: 0.4 }}
-      className='relative min-h-screen flex items-center justify-center px-3 overflow-hidden'
+      className='relative flex items-center justify-center px-3 overflow-hidden py-8'
     >
       <div className='max-w-7xl w-full flex flex-col gap-6'>
         {/* 🔥 TITLE */}

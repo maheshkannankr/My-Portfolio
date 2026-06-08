@@ -33,7 +33,7 @@ const socialLinks = [
 
 export default function Contact() {
   return (
-    <section className='py-32 px-6 max-w-6xl mx-auto'>
+    <section className='py-10 md:py-32 px-6 max-w-6xl mx-auto'>
       {/* 🔥 Title */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
@@ -117,7 +117,7 @@ export default function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* 🧊 RIGHT SIDE (FORM) */}
+        {/* 🧊 RIGHT SIDE (FORM) 
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -136,7 +136,6 @@ export default function Contact() {
             '
           >
             <form className='space-y-5'>
-              {/* Name */}
               <input
                 type='text'
                 placeholder='Your Name'
@@ -148,7 +147,6 @@ export default function Contact() {
                 '
               />
 
-              {/* Email */}
               <input
                 type='email'
                 placeholder='Your Email'
@@ -160,7 +158,6 @@ export default function Contact() {
                 '
               />
 
-              {/* Message */}
               <textarea
                 rows={4}
                 placeholder='Your Message'
@@ -172,7 +169,6 @@ export default function Contact() {
                 '
               />
 
-              {/* Button */}
               <button
                 type='submit'
                 className='
@@ -185,7 +181,7 @@ export default function Contact() {
               </button>
             </form>
           </div>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </section>
   );

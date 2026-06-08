@@ -11,7 +11,7 @@ export default function Hero() {
       transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
       viewport={{ once: false, amount: 0.4 }}
     >
-      <section className='relative min-h-screen flex items-center justify-center px-6 overflow-hidden '>
+      <section className='relative flex items-center justify-center px-6 overflow-hidden py-8'>
         <div className='max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12'>
           {/* 🔥 TEXT (LEFT) */}
           <motion.div

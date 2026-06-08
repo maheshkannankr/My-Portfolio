@@ -130,7 +130,7 @@ export default function Home() {
 
       {/* 🔥 Sections */}
       <motion.div
-        className='fixed inset-0 overflow-hidden z-10 bg-white/20 backdrop-blur-xl'
+        className='fixed inset-0 overflow-hidden z-10 backdrop-blur-xl mb-28 sm:mb-0'
         drag='y'
         dragDirectionLock
         dragConstraints={{ top: 0, bottom: 0 }}

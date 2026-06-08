@@ -90,7 +90,7 @@ export default function Skills() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: false, amount: 0.4 }}
     >
-      <section className='relative min-h-screen flex justify-center px-6 pt-24'>
+      <section className='relative flex justify-center px-6 pt-10 md:pt-24'>
         <div className='max-w-7xl w-full'>
           {/* 🔥 TITLE */}
           <motion.h2

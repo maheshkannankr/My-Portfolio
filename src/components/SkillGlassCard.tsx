@@ -13,7 +13,7 @@ export default function SkillGlassCard({ name, icon }: Props) {
       <div
         className='
             relative z-10
-            w-20 h-20 sm:w-20 sm:h-20 md:w-35 md:h-35 lg:w-40 lg:h-40
+            w-20 h-20 sm:w-20 sm:h-20 md:w-25 md:h-25 lg:w-40 lg:h-40
             rounded-2xl
             bg-red
             bg-white/5
@@ -34,7 +34,7 @@ export default function SkillGlassCard({ name, icon }: Props) {
           alt=''
           width={100}
           height={100}
-          className='opacity-50 blur-sm absolute grayscale -z-10 w-10 h-10 sm:w-20 sm:h-20 top-1/2 left-1/4 transform translate-x-1/16 -translate-y-1/2'
+          className='opacity-50 blur-sm absolute grayscale -z-10 w-10 h-10 sm:w-15 sm:h-15 top-1/2 left-1/4 transform translate-x-1/16 -translate-y-1/2'
         />
         <Image
           src={icon}
@@ -44,7 +44,7 @@ export default function SkillGlassCard({ name, icon }: Props) {
           className='w-10 h-10 sm:w-20 sm:h-20'
         />
 
-        <h3 className='text-lg mt-3 text-center font-semibold hidden sm:inline text-black/70'>
+        <h3 className='text-lg mt-3 text-center font-semibold hidden lg:inline text-black/70'>
           {name}
         </h3>
       </div>

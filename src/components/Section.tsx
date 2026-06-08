@@ -34,9 +34,9 @@ export default function Section({
         transformPerspective: 1000,
         zIndex: isActive ? 10 : 0,
       }}
-      className='absolute inset-0 flex items-center justify-center px-6 md:px-12 lg:px-24'
+      className='absolute inset-0 flex items-start sm:items-center justify-center px-3 sm:px-6 md:px-12 lg:px-24 overflow-y-auto'
     >
-      <div className='max-w-7xl w-full rounded-3x backdrop-blur-xl p-5 sm:p-10'>
+      <div className='max-w-7xl w-full rounded-3x backdrop-blur-xl p-3 sm:p-6 md:p-10 my-4 sm:my-0'>
         {children}
       </div>
     </motion.section>

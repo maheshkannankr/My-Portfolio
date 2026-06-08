@@ -25,8 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${nunito.variable} ${tangerine.variable}`}>
-      <body className='font-sans bg-background-light text-text-primary dark:bg-background-dark dark:text-text-inverse transition-colors duration-300'>
+    <html lang='en'>
+      <body
+        className={`font-sans bg-background-light text-text-primary dark:bg-background-dark dark:text-text-inverse transition-colors duration-300 ${nunito.variable} ${tangerine.variable}`}
+      >
         <PopupModelProvider>{children}</PopupModelProvider>
       </body>
     </html>

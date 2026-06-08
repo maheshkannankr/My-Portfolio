@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useEffect } from 'react';
 
 type PopupModelProps = {
   isOpen: boolean;
@@ -14,6 +15,15 @@ export default function PopupModel({
   onClose,
   children,
 }: PopupModelProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -26,6 +36,8 @@ export default function PopupModel({
         >
           <motion.div
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}

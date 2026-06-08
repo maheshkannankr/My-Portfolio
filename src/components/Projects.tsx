@@ -5,6 +5,7 @@ import { ProjectCard } from './ProjectCards';
 import PopupModel from './PopupModel';
 import ProjectOverviewModal from './ProjectOverviewModal';
 import { projects } from '@/data/projects';
+import ProjectCarousel from './ProjectCarousel';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -28,12 +29,8 @@ export default function Projects() {
       </h2>
 
       {/* GRID */}
-      <div className='px-10'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15'>
-          {projects.map((project, i) => (
-            <ProjectCard key={i} project={project} />
-          ))}
-        </div>
+      <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24'>
+        <ProjectCarousel />
       </div>
 
       {/* MODAL */}

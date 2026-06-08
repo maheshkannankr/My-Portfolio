@@ -1,30 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { experiences } from './ExperienceData';
+import { experiences } from '../data/ExperienceData';
 
 export default function Experience() {
   return (
-    <section className='relative py-24 px-6 max-w-5xl mx-auto'>
-      {/* 🔥 Vertical Line */}
-      <div
-        className='absolute 
-                md:left-1/2 left-4 
-                top-0 h-full w-[2px] 
-                border-l border-dashed border-gray-300'
-      />
+    <section className='relative py-10 md:py-24 px-6 max-w-5xl mx-auto'>
+      {/* Vertical Line — desktop only */}
+      <div className='hidden md:block absolute md:left-1/2 top-0 h-full w-0.5 border-l border-dashed border-gray-300' />
 
-      <div className='space-y-16'>
+      <div className='space-y-8 md:space-y-16'>
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className='
-                relative grid grid-cols-1 md:grid-cols-2
-                items-start gap-6 md:gap-10
-                '
+            className='relative grid grid-cols-1 md:grid-cols-2 items-start gap-4 md:gap-10'
           >
-            {/* 🔴 Node */}
-            <div className='absolute left-1/2 -translate-x-1/2 top-2 z-10'>
+            {/* Node — desktop only */}
+            <div className='hidden md:block absolute left-1/2 -translate-x-1/2 top-2 z-10'>
               <div className='w-5 h-5 rounded-full bg-primary border-4 border-white shadow-md' />
             </div>
 
@@ -33,11 +25,15 @@ export default function Experience() {
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className='md:text-right md:pr-10 text-left'
+              className='md:text-right md:pr-10 text-left flex md:block items-center gap-3'
             >
-              <h3 className='font-semibold text-gray-900'>{exp.company}</h3>
-              <p className='text-sm text-gray-500'>{exp.location}</p>
-              <p className='text-xs text-gray-400 mt-1'>{exp.duration}</p>
+              {/* Mobile dot */}
+              <div className='md:hidden w-3 h-3 rounded-full bg-primary shrink-0' />
+              <div>
+                <h3 className='font-semibold text-gray-900'>{exp.company}</h3>
+                <p className='text-sm text-gray-500'>{exp.location}</p>
+                <p className='text-xs text-gray-400 mt-1'>{exp.duration}</p>
+              </div>
             </motion.div>
 
             {/* 📦 RIGHT SIDE */}
@@ -45,7 +41,7 @@ export default function Experience() {
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className='md:pl-10'
+              className='pl-4 md:pl-10 border-l-2 md:border-l-0 border-dashed border-gray-200'
             >
               {/* 🪧 Role */}
               <h3 className='font-semibold text-gray-900 mb-2'>{exp.role}</h3>

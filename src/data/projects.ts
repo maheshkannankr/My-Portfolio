@@ -1,5 +1,6 @@
 export const projects = [
   {
+    id: 1,
     title: 'AI Form Builder & Workflow Automation Platform',
 
     role: 'Developed an AI-powered platform to dynamically generate forms, assign users/admins, and manage multi-cycle workflows, enabling automated data collection and approval processes.',
@@ -16,6 +17,7 @@ export const projects = [
   },
 
   {
+    id: 2,
     title: 'Cronus – AI Data Extraction Platform',
 
     role: 'Engineered a scalable AI-powered data extraction platform to automate complex workflows and deliver real-time insights through dynamic dashboards.',
@@ -31,6 +33,7 @@ export const projects = [
   },
 
   {
+    id: 3,
     title: 'PMS – Enterprise Performance Management System',
 
     role: 'Built a performance management system with role-based workflows and multi-level approvals to streamline employee evaluations.',
@@ -46,6 +49,7 @@ export const projects = [
   },
 
   {
+    id: 4,
     title: 'TBTA – Mobile Application (Play Store)',
 
     role: 'Developed and deployed a production-ready mobile application with real-time data tracking and multi-role access.',
@@ -61,6 +65,7 @@ export const projects = [
   },
 
   {
+    id: 5,
     title: 'Sevanun – Patient Monitoring System',
 
     role: 'Designed and developed a real-time patient monitoring system to improve healthcare data visibility and workflow efficiency.',

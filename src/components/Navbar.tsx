@@ -43,7 +43,7 @@ export default function LeftNavbar({ active, onNavigate }: LeftNavbarProps) {
           {active === item.id && (
             <motion.div
               layoutId='nav-indicator'
-              className='absolute inset-0 rounded-xl bg-white shadow-lg'
+              className='absolute inset-0 rounded-xl bg-white shadow-lg h-12 w-12 top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2'
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             />
           )}
