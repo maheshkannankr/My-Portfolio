@@ -17,6 +17,11 @@ const tangerine = Tangerine({
 export const metadata = {
   title: 'Mahesh Portfolio',
   description: 'Developer Portfolio',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({
